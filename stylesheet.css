@@ -1,0 +1,37 @@
+/**Note to those assigned for CSS, class names are already documented, please check comments in HTML file directory.**/
+
+/**Feature container separation, no design yet, only separated elements**/
+.featured-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:30px;
+}
+
+/**Contact form separation, no design yet, only separated elements**/
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+/**Side bar separation, no design yet, only separated elements**/
+.productspage-layout{
+    display: flex;
+    gap:30px
+}
+.filter-selection{
+    width:250px;
+}
+fieldset{
+    display:flex;
+    flex-direction: column;
+}
+.product-section{
+    flex:100px;
+    gap:20px;
+}
+.product-grid{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px;
+}

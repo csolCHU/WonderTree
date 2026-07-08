@@ -4,18 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>WonderTree | About and Contact</title>
 </head>
 <body>
     <!--Logo, Search bar, and Redirect-->
-    <header>
-        <a href="index.html">Home</a>
+    <header class="navbar">
+      <a href="index.html">
+        <img src="images/placeholder file.gif" width="50px" alt="WonderTree Logo">
+      </a>
+      <!--Search container, Div contains submission icon. CSS Magnifying Icon-->
+      <form class="search-container">
+        <input type="search" class="search-bar" id=search-input placeholder="Search product...">
+        <button type="submit" class="search-icon">🔍</button>
+      </form>
+      <nav>
         <a href="productspage.html">Products Page</a>
         <a href="aboutpage.html">About Page</a>
-        <a href="cartpage.html">Cart</a>
+        <a href="cartpage.html">🛒</a>
+      </nav>
     </header>
+
+    <!--About Us Details-->
+    <div class="aboutdetails">
+        <h3 class="about-header">About Us</h3>
+        <p class="about-details">WonderTree is dedicated to providing high-quality products for pets. We believe every pet deserves love, care, and the best supplies to keep them healthy and happy.</p>
+    </div>
+
+    <div class="aboutmission">
+        <h4 class="mv-header">Mission</h4>
+        <p class="about-details">To provide affordable, high-quality pet products while delivering excellent customer service to every pet owner.</p>
+    </div>
+
+    <div class="aboutvision">
+        <h4 class="mv-header">Vision</h4>
+        <p class="about-details">To become one of the most trusted online pet stores by promoting responsible pet care and customer satisfaction.</p>
+    </div>
+
+    <!--Forms and Copyright-->
+    <footer>
+    <h5>CONCERNS? Send us a message!</h5>
+        <!--Contact Form-->
+        <!--Those assigned in CSS, please add line-breaks, refer to prototype design. -->
+        <form class="contact-form">
+          <input type="email" class="contact-email" placeholder="Email">
+          <input type="tel" class="contact-tel" placeholder="Phone Number (Optional)">
+          <textarea class="contact-message" placeholder="Type your message here..."></textarea>
+          <!--CSS make button green and "Send" all upper-case. -->
+          <button type="submit" class="contact-submission">
+            Send
+          </button>
+        </form>
+      <!--Company Details-->
+        <h6>WonderTree Co. 2026 All Rights Reserved.</h6>
+        <p>123 ABC st. Quezon City, Philippines</p>
+        <p>WonderTreeCo@co.ph | 1234567890</p>
+    </footer>
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>
