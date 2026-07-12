@@ -23,6 +23,9 @@ nav a{
     .desktop-nav{
         display:none;
     }
+    .search-container{
+        display:none;
+    }
     .mobile-nav{
         display:flex;
     }
@@ -33,7 +36,6 @@ nav a{
     max-height: 400px;
     max-width: 1500px;
 }
-
 img{
     align-items: center;
     max-width: 200px;
@@ -53,6 +55,26 @@ img{
 .featured-card{
     border: 1px;
     border-style: solid;
+}
+/** Mobile client landing page**/
+@media (max-width:480px){
+    .featured-container{
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .featured-grid{
+        margin: 20px;
+    }
+    .featured-card{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .featured-card img{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }
 
 /**Side bar separation, no design yet, only separated elements**/
@@ -79,7 +101,20 @@ fieldset{
     grid-template-columns: repeat(4,1fr);
     gap:20px;
 }
-/** Mobile Products Page**/
+
+/** Mobile Products Page Product Grid goes down**/
+@media (max-width: 768px){
+    .product-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px){
+    .product-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width:768px){
     .productspage-layout{
         flex-direction: column;

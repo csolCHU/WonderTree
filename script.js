@@ -244,9 +244,22 @@ function filterProducts() {
 
     displayProducts(filteredProducts);
 }
-
+/// User can only check 1 box
 filters.forEach(filter => {
-    filter.addEventListener("change", filterProducts);
+    filter.addEventListener("change", function () {
+        if (this.checked) {
+            /// Checks where its coming from 
+            const group = this.closest("fieldset");
+
+            /// Unchecks stuff
+            group.querySelectorAll("input[type='checkbox']").forEach(other => {
+                if (other !== this) {
+                    other.checked = false;
+                }
+            });
+        }
+        filterProducts();
+    });
 });
 
 /// Product Search Function
@@ -326,6 +339,7 @@ function initializeProductButtons() {
                 return;
             }
             addToCart(productId, quantity);
+            alert("Item added to cart!");
         });
     });
 }
@@ -390,3 +404,14 @@ if (clearCartButton) {
         displayCart();
     });
 }
+
+/// Mobile Search Function 
+const mobileSearchBtn = document.getElementById("mobile-search-btn");
+
+mobileSearchBtn.addEventListener("click", function () {
+    const search = prompt("Search for a product:");
+    if (search && search.trim() !== "") {
+        window.location.href =
+            `productspage.html?search=${encodeURIComponent(search)}`;
+    }
+});
