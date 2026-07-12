@@ -7,8 +7,37 @@
     gap:30px;
 }
 
-/**Image size**/
+/** Desktop & Mobile Nav**/
+nav a{
+    padding-left:10px;
+    color:black;
+}
+.desktop-nav{
+    display:flex;
+}
+.mobile-nav{
+    display:none;
+}
+
+@media(max-width:768px){
+    .desktop-nav{
+        display:none;
+    }
+    .mobile-nav{
+        display:flex;
+    }
+}
+
+/**Image & GIFsize**/
+#caro1,#caro2,#caro3{
+    display: flex;
+    align-items: center;
+    max-height: 400px;
+    max-width: 1500px;
+}
+
 img{
+    align-items: center;
     max-width: 200px;
     max-height: 200px;
 }
@@ -21,7 +50,7 @@ img{
     gap:10px;
 }
 .featured-grid{
-    margin:10%
+    margin:10%;
 }
 .featured-card{
     border: 1px;

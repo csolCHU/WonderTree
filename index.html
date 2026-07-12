@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>WonderTree</title>
+    <title>WonderTree | Home</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
@@ -16,12 +17,31 @@
       <!--Search container, Div contains submission icon. CSS Magnifying Icon-->
       <form class="search-container">
         <input type="search" class="search-bar" id="search-input" placeholder="Search products...">
-        <button type="submit" class="search-icon">🔍</button>
+        <button type="submit" class="search-icon">
+          <i class="bi bi-search"></i>
+        </button>
       </form>
-      <nav>
-        <a href="productspage.html">Products Page</a>
-        <a href="aboutpage.html">About Page</a>
-        <a href="cartpage.html">🛒</a>
+      <nav class="desktop-nav">
+        <a href="productspage.html">
+          <i class="bi bi-grid"></i> Products Page
+        </a>
+        <a href="aboutpage.html">
+          <i class="bi bi-people"></i> About Page
+        </a>
+        <a href="cartpage.html">
+          <i class="bi bi-cart"></i> Cart
+        </a>
+      </nav>
+      <nav class="mobile-nav">
+        <a href="productspage.html">
+          <i class="bi bi-grid"></i>
+        </a>
+        <a href="aboutpage.html">
+          <i class="bi bi-people"></i>
+        </a>
+        <a href="cartpage.html">
+          <i class="bi bi-cart"></i>
+        </a>
       </nav>
     </header>
 
@@ -33,13 +53,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="gif/placeholder file.gif" alt="First slide" width="100px" height="100px">
+                <img class="d-block w-100" src="gif/dog-playing.gif" alt="First slide" id="caro1">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="gif/placeholder file.gif" alt="Second slide" width="100px" height="100px">
+                <img class="d-block w-100" src="gif/cat-playing.gif" alt="Second slide" id="caro2">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="gif/placeholder file.gif" alt="Third slide" width="100px" height="100px">
+                <img class="d-block w-100" src="gif/aquarium.gif" alt="Third slide" id="caro3">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
