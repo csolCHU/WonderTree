@@ -157,3 +157,82 @@ const products = [
 // Callout. Testing Product Categories
 console.log(products[17].description)
 
+// Landing Page
+const featuredCards = document.querySelectorAll(".featured-card");
+
+if (featuredCards.length > 0) {
+
+    for (let i = 0; i < Math.min(4, products.length); i++) {
+
+        const product = products[i];
+        const card = featuredCards[i];
+
+        const image = card.querySelector("img");
+        const price = card.querySelector(".product-price");
+        const name = card.querySelector(".product-name");
+        const description = card.querySelector(".product-desc");
+
+        image.src = product.img;
+        image.alt = product.name;
+
+        price.textContent = `₱${product.price}`;
+        name.textContent = product.name;
+        description.textContent = product.description;
+    }
+
+}
+
+// Products Page + Filters
+const productGrid = document.getElementById("product-grid");
+
+function displayProducts(productList) {
+    if (!productGrid) return;
+    let cards = "";
+    productList.forEach(product => {
+        cards += `
+            <div class="product-card">
+                <img src="${product.img}" alt="${product.name}">
+                <h4>${product.name}</h4>
+                <p>₱${product.price}</p>
+                <p>${product.description}</p>
+            </div>
+        `;
+    });
+    productGrid.innerHTML = cards;
+    const resultCount = document.getElementById("result-count");
+    if (resultCount) {
+        resultCount.textContent = `${productList.length} Product(s) Found`;
+    }
+}
+
+// Show all products first
+if (productGrid) {
+    displayProducts(products);
+}
+
+// Filter Selection
+const filters = document.querySelectorAll(".filter-selection input[type='checkbox']");
+
+// Filter Functionality
+function filterProducts() {
+    let selectedTags = [];
+    filters.forEach(filter => {
+        if (filter.checked) {
+            selectedTags.push(filter.value);
+        }
+    });
+
+    if (selectedTags.length === 0) {
+        displayProducts(products);
+        return;
+    }
+    const filteredProducts = products.filter(product => {
+        return selectedTags.every(tag => product.tags.includes(tag));
+    });
+
+    displayProducts(filteredProducts);
+}
+
+filters.forEach(filter => {
+    filter.addEventListener("change", filterProducts);
+});
