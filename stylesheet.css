@@ -7,11 +7,21 @@
     gap:30px;
 }
 
+/**Image size**/
+img{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+
 /**Contact form separation, no design yet, only separated elements**/
 .contact-form{
     display: flex;
     flex-direction: column;
     gap:10px;
+}
+.featured-grid{
+    margin:10%
 }
 .featured-card{
     border: 1px;
@@ -19,6 +29,9 @@
 }
 
 /**Side bar separation, no design yet, only separated elements**/
+main{
+    margin:10%;
+}
 .productspage-layout{
     display: flex;
     gap:30px
