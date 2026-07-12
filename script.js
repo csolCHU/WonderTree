@@ -154,10 +154,13 @@ const products = [
     }
 ]
 
-// Callout. Testing Product Categories
+/// Array for cart
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/// Callout. Testing Product Categories
 console.log(products[17].description)
 
-// Landing Page
+/// Landing Page (Can ignore, no functionality aside from display)
 const featuredCards = document.querySelectorAll(".featured-card");
 
 if (featuredCards.length > 0) {
@@ -182,7 +185,7 @@ if (featuredCards.length > 0) {
 
 }
 
-// Products Page + Filters
+// Products Page + Filters (Do not ignore!)
 const productGrid = document.getElementById("product-grid");
 
 function displayProducts(productList) {
@@ -190,14 +193,24 @@ function displayProducts(productList) {
     let cards = "";
     productList.forEach(product => {
         cards += `
-            <div class="product-card">
+            <div class="product-card" data-id="${product.id}">
                 <img src="${product.img}" alt="${product.name}">
                 <h4>${product.name}</h4>
                 <p>₱${product.price}</p>
+                <div class="quantity-selector">
+                    <button class="minus-btn">-</button>
+                    <span class="quantity">0</span>
+                    <button class="plus-btn">+</button>
+                </div>
+
+                <button class="add-cart-btn">Add to Cart</button>
             </div>
         `;
     });
     productGrid.innerHTML = cards;
+    /// Makes funny add to cart button work 
+    initializeProductButtons();
+
     const resultCount = document.getElementById("result-count");
     if (resultCount) {
         resultCount.textContent = `${productList.length} Product(s) Found`;
@@ -236,7 +249,7 @@ filters.forEach(filter => {
     filter.addEventListener("change", filterProducts);
 });
 
-// Product Search Function
+/// Product Search Function
 const searchInput = document.getElementById("search-input");
 const searchForm = document.querySelector(".search-container");
 
@@ -244,7 +257,7 @@ if (searchForm) {
     searchForm.addEventListener("submit", function(event) {
         event.preventDefault();
         const searchTerm = searchInput.value.trim();
-        // If already on Products Page
+        /// If already on Products Page
         if (productGrid) {
             const searchResults = products.filter(product =>
                 product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -252,7 +265,7 @@ if (searchForm) {
             displayProducts(searchResults);
         }
 
-        // If on Homepage/About/Cart
+        /// If on Homepage/About/Cart
         else {
             window.location.href =
                 `productspage.html?search=${encodeURIComponent(searchTerm)}`;
@@ -264,16 +277,116 @@ if (searchForm) {
 // Check if the user came from another page with a search
 const params = new URLSearchParams(window.location.search);
 const search = params.get("search");
-
 if (search) {
-
     searchInput.value = search;
-
     const searchResults = products.filter(product =>
         product.name.toLowerCase().includes(search.toLowerCase())
     );
-
     displayProducts(searchResults);
-
 }
 
+/// Add to Cart function and quantity selector!!!
+function initializeProductButtons() {
+    const plusButtons = document.querySelectorAll(".plus-btn");
+    const minusButtons = document.querySelectorAll(".minus-btn");
+    const addCartButtons = document.querySelectorAll(".add-cart-btn");
+    /// Plus
+    plusButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const quantity =
+                button.parentElement.querySelector(".quantity");
+            quantity.textContent =
+                Number(quantity.textContent) + 1;
+        });
+    });
+
+    /// Minus
+    minusButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const quantity =
+                button.parentElement.querySelector(".quantity");
+            quantity.textContent =
+                Math.max(
+                    0,
+                    Number(quantity.textContent) - 1
+                );
+        });
+    });
+
+    /// Add to Cart
+    addCartButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const card = button.closest(".product-card");
+            const productId = Number(card.dataset.id);
+            const quantity = Number(
+                card.querySelector(".quantity").textContent
+            );
+            if (quantity === 0) {
+                alert("Please select a quantity first.");
+                return;
+            }
+            addToCart(productId, quantity);
+        });
+    });
+}
+
+function addToCart(productId, quantity) {
+    const existingProduct = cart.find(item => item.id === productId);
+    if(existingProduct){
+        existingProduct.quantity += quantity;
+    }else{
+        cart.push({
+            id: productId,
+            quantity: quantity
+        });
+    }
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    console.log(cart);
+}
+
+///Cart page functionality
+const cartList = document.getElementById("cart-list");
+function displayCart() {
+    if (!cartList) return;
+    cartList.innerHTML = "";
+    let total = 0;
+    cart.forEach(item => {
+        const product = products.find(p => p.id === item.id);
+        const itemTotal = product.price * item.quantity;
+        total += itemTotal;
+        cartList.innerHTML += `
+            <div class="cart-item">
+                <img src="${product.img}" alt="${product.name}" width="100">
+                <h3>${product.name}</h3>
+                <p>Price: ₱${product.price}</p>
+                <p>Quantity: ${item.quantity}</p>
+                <p>Subtotal: ₱${itemTotal}</p>
+                <hr>
+            </div>
+        `;
+    });
+    document.getElementById("cart-count").textContent =
+        `Items in Cart: ${cart.length}`;
+
+    document.getElementById("cart-total").textContent =
+        `Total Price: ₱${total}`;
+}
+
+displayCart();
+
+/// Clears user cart
+const clearCartButton = document.getElementById("clear-cart-btn");
+
+if (clearCartButton) {
+    clearCartButton.addEventListener("click", function () {
+        // Empty the cart array
+        cart = [];
+        // Remove saved cart from localStorage
+        localStorage.removeItem("cart");
+        // Refresh the cart display
+        displayCart();
+    });
+}
