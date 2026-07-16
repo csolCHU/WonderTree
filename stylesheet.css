@@ -70,19 +70,61 @@ img{
 }
 
 
-/**Contact form separation, no design yet, only separated elements**/
+/**Contact Form with Design [not yet included with the Mission and Vision design]**/
 .contact-form{
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap:18px;
+    background: linear-gradient (135deg, #fdfcf7, #fffbe6);
+    padding: 25px;
+    border: 2px solid #c2a878;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba (0,0,0,0.1);
 }
-.featured-grid{
-    margin:10%;
+.contact-form input,
+.contact-form textarea {
+    padding: 14px;
+    border: 1px solid #a3c9a8;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.featured-card{
-    border: 1px;
-    border-style: solid;
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #4a7c59;
+    outline: none;
+    box-shadow: 0 0 6px rgba (74,124,89,0.3);
 }
+
+.contact-form button {
+    background-color: #4a7c59;
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2 ease;
+}
+
+.contact-form button:hover {
+    background-color: #3b5d47
+        transform: translateY (-2px);
+}
+
+/* Footer */
+footer {
+    background-color: #4a7c59;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid #c2a878;
+    font-size: 0.9rem;
+}
+
 /** Mobile client landing page**/
 @media (max-width:480px){
     .featured-container{
@@ -157,12 +199,68 @@ fieldset{
 /** Cart List Page**/
 .cart-page{
     margin:10%;
+    background: linear-gradient (135deg, #f0f9f4, #d9ead3); /* leafy gradient background */
+    borde-radius: 16px;
+    padding: 30px;
+    font-family: 'Segoe UI', sans-serif;
 }
 .cart-container{
-    display:block;
-    margin:20%
-    padding:2%;
+    background-color: #ffffff;
+    border: 2px solid #a3c9a8;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 6px 12px rgba (0,0,0,0.1);
 }
+
+.cart-container h2 {
+    color: 4a7c59;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px dashed #c2a878;
+    background-color: #fdfcf7;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: transform 0.2 ease, background-color 0.3s ease;
+}
+
+.cart-item: hover {
+    transofmr: scale (1.02);
+    background-color: #fd7fdf9;
+}
+
+.cart-item img {
+    max-width: 90px;
+    border-radius: 10px;
+    border: 2px solid #a3c9a8;
+}
+
+.cart-container button {
+    background-color: #4a7c59;
+    color: #fff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-container button: hover {
+    background-color: 3b5d47;
+    transform: translateY (-2px);
+}
+
+
 /** GLOBAL HEADER (shared by index + products) **/
 header.navbar {
     background-color: #f7d64a; /* yellow header */
