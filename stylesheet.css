@@ -1,13 +1,13 @@
 /**Note to those assigned for CSS, class names are already documented, please check comments in HTML file directory.**/
 
-/**Feature container separation, no design yet, only separated elements**/
-.featured-container{
+/** Feature container **/
+.featured-container {
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap:30px;
+    gap: 30px;
 }
 
-/** Desktop & Mobile Nav**/
+/** Desktop & Mobile Nav + Search **/
 nav a {
     padding-left: 10px;
     color: black;
@@ -57,115 +57,109 @@ nav a {
     .mobile-nav { display: flex; }
 }
 
-
-/**Image & GIFsize**/
-#caro1,#caro2,#caro3{
+/** Image & GIF size **/
+#caro1, #caro2, #caro3 {
     max-height: 400px;
     max-width: 1500px;
 }
-img{
+
+img {
     align-items: center;
     max-width: 200px;
     max-height: 200px;
 }
 
-
-/**Contact form separation, no design yet, only separated elements**/
-.contact-form{
+/** Contact form **/
+.contact-form {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
 }
-.featured-grid{
-    margin:10%;
+
+.featured-grid {
+    margin: 10%;
 }
-.featured-card{
-    border: 1px;
-    border-style: solid;
+
+.featured-card {
+    border: 1px solid #ccc;
 }
-/** Mobile client landing page**/
-@media (max-width:480px){
-    .featured-container{
+
+/** Mobile client landing page **/
+@media (max-width:480px) {
+    .featured-container {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    .featured-grid{
+    .featured-grid {
         margin: 20px;
     }
-    .featured-card{
+    .featured-card {
         width: 100%;
         box-sizing: border-box;
         padding: 10px;
     }
-    .featured-card img{
+    .featured-card img {
         width: 100%;
         height: auto;
         display: block;
     }
 }
 
-/**Side bar separation, no design yet, only separated elements**/
-main{
-    margin:10%;
+/** Sidebar **/
+main {
+    margin: 10%;
 }
-.productspage-layout{
+
+.productspage-layout {
     display: flex;
-    gap:30px
+    gap: 30px;
 }
-.filter-selection{
-    width:250px;
+
+.filter-selection {
+    width: 250px;
 }
-fieldset{
-    display:flex;
+
+fieldset {
+    display: flex;
     flex-direction: column;
 }
-.product-section{
-    flex:100px;
-    gap:20px;
+
+.product-section {
+    flex: 1;
+    gap: 20px;
 }
-.product-grid{
-    display:grid;
+
+.product-grid {
+    display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap:20px;
+    gap: 20px;
 }
 
-/** Mobile Products Page Product Grid goes down**/
-@media (max-width: 768px){
-    .product-grid{
-        grid-template-columns: repeat(2, 1fr);
-    }
+/** Product grid responsive **/
+@media (max-width:768px) {
+    .productspage-layout { flex-direction: column; }
+    .filter-selection { width: 100%; }
+    .product-grid { grid-template-columns: repeat(2,1fr); }
 }
 
-@media (max-width: 480px){
-    .product-grid{
-        grid-template-columns: 1fr;
-    }
+@media (max-width:480px) {
+    .product-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width:768px){
-    .productspage-layout{
-        flex-direction: column;
-    }
-    .filter-selection{
-        width:100%;
-    }
-    .product-grid{
-        grid-template-columns: repeat(2,1fr);
-    }
+/** Cart Page **/
+.cart-page {
+    margin: 10%;
 }
 
-/** Cart List Page**/
-.cart-page{
-    margin:10%;
+.cart-container {
+    display: block;
+    margin: 20%;
+    padding: 2%;
 }
-.cart-container{
-    display:block;
-    margin:20%
-    padding:2%;
-}
-/** GLOBAL HEADER (shared by index + products) **/
+
+/** Global Header **/
 header.navbar {
-    background-color: #f7d64a; /* yellow header */
+    background-color: #f7d64a;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -183,19 +177,7 @@ header.navbar a {
     color: #333;
 }
 
-.mobile-nav {
-    display: none;
-}
-
-@media(max-width:768px){
-    .desktop-nav { display: none; }
-    .search-container { display: none; }
-    .mobile-nav { display: flex; gap: 15px; }
-}
-
-/** INDEX PAGE **/
-
-/* Carousel Banner */
+/** Index Page **/
 .carousel {
     text-align: center;
     padding: 40px 20px;
@@ -212,7 +194,6 @@ header.navbar a {
     margin-bottom: 20px;
 }
 
-/* Featured Products */
 .featured-grid h1 {
     text-align: center;
     font-size: 22px;
@@ -257,7 +238,7 @@ header.navbar a {
     color: #555;
 }
 
-/* Footer (shared) */
+/** Footer **/
 footer {
     background-color: #f7d64a;
     text-align: center;
@@ -276,15 +257,13 @@ footer p {
     color: #333;
 }
 
-/** PRODUCTS PAGE **/
-
+/** Products Page **/
 .productspage-layout {
     display: flex;
     gap: 30px;
     margin: 5%;
 }
 
-/* Sidebar filters */
 .filter-selection {
     width: 250px;
 }
@@ -310,11 +289,6 @@ fieldset label {
     font-size: 14px;
 }
 
-/* Product grid */
-.product-section {
-    flex: 1;
-}
-
 .product-section h2 {
     font-size: 20px;
     margin-bottom: 10px;
@@ -333,7 +307,6 @@ fieldset label {
     gap: 20px;
 }
 
-/* Individual product boxes (dynamic JS inserts divs here) */
 .product-grid > div {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -346,11 +319,3 @@ fieldset label {
 .product-grid > div:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
-/* Responsive */
-@media (max-width:768px){
-    .productspage-layout { flex-direction: column; }
-    .filter-selection { width: 100%; }
-    .featured-container { grid-template-columns: 1fr; }
-}
-
