@@ -384,15 +384,14 @@ function displayCart() {
         total += itemTotal;
         cartList.innerHTML += `
             <div class="cart-item">
-                <img src="${product.img}" alt="${product.name}" width="100">
-                <h3>${product.name}</h3>
-                <p class="cart-price">Price: ₱${product.price}</p>
-                <p>Quantity: ${item.quantity}</p>
-                <p>Subtotal: ₱${itemTotal}</p><br><br>
-                <button class="remove-btn" data-id="${product.id}">
-                Remove
-                </button>
-                <hr>
+                <img src="${product.img}" alt="${product.name}" width="200px">
+                <div class="cart-details">
+                    <h3>${product.name}</h3>
+                    <p>Price: ₱${product.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Subtotal: ₱${itemTotal}</p>
+                    <button class="remove-btn" data-id="${product.id}">Remove</button>
+                </div>
             </div>
         `;
     });
