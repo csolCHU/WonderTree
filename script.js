@@ -196,7 +196,7 @@ function displayProducts(productList) {
             <div class="product-card" data-id="${product.id}">
                 <img src="${product.img}" alt="${product.name}">
                 <h4>${product.name}</h4>
-                <p>₱${product.price}</p>
+                <p class="product-price">₱${product.price}</p>
                 <div class="quantity-selector">
                     <button class="minus-btn">-</button>
                     <span class="quantity">0</span>
@@ -364,6 +364,17 @@ function addToCart(productId, quantity) {
 ///Cart page functionality
 const cartList = document.getElementById("cart-list");
 function displayCart() {
+    function removeFromCart(productId) {
+
+        cart = cart.filter(item => item.id !== productId);
+    
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+    
+        displayCart();
+    }
     if (!cartList) return;
     cartList.innerHTML = "";
     let total = 0;
@@ -375,9 +386,12 @@ function displayCart() {
             <div class="cart-item">
                 <img src="${product.img}" alt="${product.name}" width="100">
                 <h3>${product.name}</h3>
-                <p>Price: ₱${product.price}</p>
+                <p class="cart-price">Price: ₱${product.price}</p>
                 <p>Quantity: ${item.quantity}</p>
-                <p>Subtotal: ₱${itemTotal}</p>
+                <p>Subtotal: ₱${itemTotal}</p><br><br>
+                <button class="remove-btn" data-id="${product.id}">
+                Remove
+                </button>
                 <hr>
             </div>
         `;
@@ -387,6 +401,14 @@ function displayCart() {
 
     document.getElementById("cart-total").textContent =
         `Total Price: ₱${total}`;
+     const removeButtons = document.querySelectorAll(".remove-btn");
+        removeButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const productId = Number(this.dataset.id);
+                removeFromCart(productId);
+            });
+        });   
+    
 }
 
 displayCart();
