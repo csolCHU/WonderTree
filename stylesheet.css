@@ -2,12 +2,19 @@
 
 /**Feature container separation, no design yet, only separated elements**/
 .featured-container{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.2s ease;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap:30px;
+    margin:30px;
 }
 
+/**---**/
 /** Desktop & Mobile Nav**/
+/**---**/
 nav a {
     padding-left: 10px;
     color: black;
@@ -52,25 +59,37 @@ nav a {
 }
 
 @media (max-width:768px) {
+    #mobile-search-btn{
+        padding: 2px 6px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px 5px 5px 5px;
+        cursor: pointer;
+    }
     .desktop-nav { display: none; }
     .search-container { display: none; }
     .mobile-nav { display: flex; }
 }
 
-
+/**---**/
 /**Image & GIFsize**/
+/**---**/
 #caro1,#caro2,#caro3{
-    max-height: 400px;
-    max-width: 1500px;
+    max-height: 500px;
+    max-width: 2000px;
 }
-img{
-    align-items: center;
-    max-width: 200px;
-    max-height: 200px;
+@media {
+    img{
+        align-items: center;
+        max-width: 200px;
+        max-height: 200px;
+    }
 }
 
-
+/**---**/
 /**Contact Form with Design [not yet included with the Mission and Vision design]**/
+/**---**/
 .contact-form{
     display: flex;
     flex-direction: column;
@@ -80,6 +99,8 @@ img{
     border: 2px solid #c2a878;
     border-radius: 16px;
     box-shadow: 0 6px 12px rgba (0,0,0,0.1);
+    background-color: white;
+    margin-bottom: 20px;
 }
 .contact-form input,
 .contact-form textarea {
@@ -115,7 +136,9 @@ img{
         transform: translateY (-2px);
 }
 
+/**---**/
 /* Footer */
+/**---**/
 footer {
     background-color: #4a7c59;
     color: #fff;
@@ -125,8 +148,10 @@ footer {
     font-size: 0.9rem;
 }
 
+/**---**/
 /** Mobile client landing page**/
-@media (max-width:480px){
+/**---**/
+@media (max-width:320px){
     .featured-container{
         grid-template-columns: 1fr;
         gap: 15px;
@@ -140,13 +165,16 @@ footer {
         padding: 10px;
     }
     .featured-card img{
+        align-items: center;
         width: 100%;
         height: auto;
         display: block;
     }
 }
 
-/**Side bar separation, no design yet, only separated elements**/
+/**---**/
+/**Product Page Side bar separation, no design yet, only separated elements**/
+/**---**/
 main{
     margin:10%;
 }
@@ -171,7 +199,9 @@ fieldset{
     gap:20px;
 }
 
+/**---**/
 /** Mobile Products Page Product Grid goes down**/
+/**---**/
 @media (max-width: 768px){
     .product-grid{
         grid-template-columns: repeat(2, 1fr);
@@ -196,14 +226,25 @@ fieldset{
     }
 }
 
+/**---**/
 /** Cart List Page**/
+/**---**/
 .cart-page{
     margin:10%;
     background: linear-gradient (135deg, #f0f9f4, #d9ead3); /* leafy gradient background */
-    borde-radius: 16px;
+    border-radius: 16px;
     padding: 30px;
     font-family: 'Segoe UI', sans-serif;
 }
+
+@media(max-width:768px){
+    .cart-item{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
 .cart-container{
     background-color: #ffffff;
     border: 2px solid #a3c9a8;
@@ -225,6 +266,7 @@ fieldset{
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    padding-left:15px;
     border-bottom: 1px dashed #c2a878;
     background-color: #fdfcf7;
     border-radius: 8px;
@@ -241,6 +283,9 @@ fieldset{
     max-width: 90px;
     border-radius: 10px;
     border: 2px solid #a3c9a8;
+}
+.cart-item h3, p{
+    padding-left:2%;
 }
 
 .cart-container button {
@@ -260,8 +305,9 @@ fieldset{
     transform: translateY (-2px);
 }
 
-
+/**---**/
 /** GLOBAL HEADER (shared by index + products) **/
+/**---**/
 header.navbar {
     background-color: #f7d64a; /* yellow header */
     display: flex;
@@ -291,9 +337,11 @@ header.navbar a {
     .mobile-nav { display: flex; gap: 15px; }
 }
 
+/**---**/
 /** INDEX PAGE **/
-
+/**---**/
 /* Carousel Banner */
+/**---**/
 .carousel {
     text-align: center;
     padding: 40px 20px;
@@ -310,19 +358,15 @@ header.navbar a {
     margin-bottom: 20px;
 }
 
+/**---**/
 /* Featured Products */
+/**---**/
 .featured-grid h1 {
     text-align: center;
     font-size: 22px;
     font-weight: bold;
     color: red;
     margin: 30px 0;
-}
-
-.featured-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
 }
 
 .featured-card {
@@ -355,7 +399,9 @@ header.navbar a {
     color: #555;
 }
 
+/**---**/
 /* Footer (shared) */
+/**---**/
 footer {
     background-color: #f7d64a;
     text-align: center;
@@ -374,8 +420,9 @@ footer p {
     color: #333;
 }
 
+/**---**/
 /** PRODUCTS PAGE **/
-
+/**---**/
 .productspage-layout {
     display: flex;
     gap: 30px;
@@ -408,7 +455,9 @@ fieldset label {
     font-size: 14px;
 }
 
+/**---**/
 /* Product grid */
+/**---**/
 .product-section {
     flex: 1;
 }
@@ -431,7 +480,9 @@ fieldset label {
     gap: 20px;
 }
 
+/**---**/
 /* Individual product boxes (dynamic JS inserts divs here) */
+/**---**/
 .product-grid > div {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -444,11 +495,19 @@ fieldset label {
 .product-grid > div:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
+/**---**/
 /* Responsive */
+/**---**/
 @media (max-width:768px){
     .productspage-layout { flex-direction: column; }
     .filter-selection { width: 100%; }
     .featured-container { grid-template-columns: 1fr; }
 }
 
+
+/**---**/
+/** About Page**/
+/**---**/
+.aboutdetails,.aboutmission,.aboutvision{
+    margin:2%;
+}
